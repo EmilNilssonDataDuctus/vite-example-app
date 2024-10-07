@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker-build": "docker build -t vite-react-app .",
+    "docker-run": "docker run -p 8080:80 vite-react-app"
   },
   "dependencies": {
     "react": "^18.3.1",
