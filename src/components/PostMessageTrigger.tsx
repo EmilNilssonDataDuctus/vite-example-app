@@ -11,9 +11,9 @@ export const PostMessageTrigger = () => {
     console.log(e);
 
     const newLogs = {
-        message: e.data,
-        timeStamp: new Date().toISOString(),
-      }
+      message: e.data,
+      timeStamp: new Date().toISOString(),
+    };
     console.log(newLogs);
 
     setLogs((oldLogs) => {
@@ -38,6 +38,8 @@ export const PostMessageTrigger = () => {
     };
   }, []);
 
+  const byLatestFirst = (a, b) => (a.timeStamp > b.timeStamp ? -1 : 1);
+
   return (
     <>
       <h1>window.postMessage API</h1>
@@ -45,9 +47,9 @@ export const PostMessageTrigger = () => {
         <div>
           <h2>Logs</h2>
           <ul style={{ textAlign: "left" }}>
-          <pre>{logs && JSON.stringify(logs, null, 2)}</pre>
-            {logs.map((log) => (
-              <li key={log.toString()}>
+            <pre>{logs && JSON.stringify(logs, null, 2)}</pre>
+            {logs.sort(byLatestFirst).map((log) => (
+              <li key={log.timeStamp}>
                 <b>{log.timeStamp}</b>: {log.message}
               </li>
             ))}
@@ -68,7 +70,7 @@ export const PostMessageTrigger = () => {
           <hr />
           <button onClick={handleClick}>
             Click to open new tab with{" "}
-            <pre>window.channel("{windowToOpen}")</pre>
+            <pre>window.open("{windowToOpen}")</pre>
           </button>
           <hr />
           <div>
@@ -76,7 +78,7 @@ export const PostMessageTrigger = () => {
             <pre>
               window.addEventListener("message", (e) =&gt; handleEvent(e))
             </pre>{" "}
-            which showcases how to use the <pre>window.postMessage()</pre>{" "}
+            which showcases how to use the <pre>window.opener.postMessage()</pre>{" "}
             browser API
           </div>
         </div>
