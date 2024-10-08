@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+pre {
+  width: min-content;
+  padding: 2px 4px;
+  background-color: grey;
+  color: black
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
