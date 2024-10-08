@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const PostMessageTrigger = () => {
   const [windowToOpen, setWindowToOpen] = useState(
-    "https://astonishing-torrone-744d87.netlify.app/"
+    "https://orange-pebble-0361d5303.5.azurestaticapps.net/"
   );
   const [logs, setLogs] = useState([]);
 
